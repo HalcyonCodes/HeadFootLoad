@@ -15,7 +15,6 @@ class StatusTicker extends StatefulWidget {
 
 class _StatusTricker extends State<StatusTicker> with TickerProviderStateMixin {
   AnimationController? controller;
-
   Animation<double>? animation;
 
   void refershStatusWidget() {

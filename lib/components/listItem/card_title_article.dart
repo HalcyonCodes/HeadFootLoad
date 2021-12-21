@@ -25,7 +25,6 @@ class ArticleTitleCard extends StatelessWidget {
     });
     return Container(
       margin: const EdgeInsets.only(bottom: 24),
-      //padding: const EdgeInsets.only(left: 24,right: 24,top: 12,bottom: 0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: KColor.containColor,

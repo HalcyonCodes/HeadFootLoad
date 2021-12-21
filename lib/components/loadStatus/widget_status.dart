@@ -59,6 +59,7 @@ class StatusWidget extends AnimatedWidget {
                   //加载完成
                   if (status == Status.statusIdel ||
                       status == Status.statusFootLoadCompleted)
+                      //更改为加载成功图标
                     Container(
                       height: 14,
                       width: 14,
@@ -67,6 +68,7 @@ class StatusWidget extends AnimatedWidget {
                   //加载失败
                   if (status == Status.statusFootLoadFaild ||
                       status == Status.statusHeadLoadFaild)
+                      //更改为加载失败图标
                     Container(
                       height: 14,
                       width: 14,
