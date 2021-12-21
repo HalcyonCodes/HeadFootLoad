@@ -18,6 +18,8 @@
   - import 'package:head_foot_load/head_foot_load.dart'; 
   - return ArticleTitle(viewModel: viewModel, width: yourWidth)
 
+demo在demo里，修改demo里viewModel里dio请求地址后，直接用Chrome运行本项目就可以看到
+
 ## 需要完善的地方
 
 lib/components/loadStatus/widget_status.dart 那里需要完善加载图标
