@@ -68,7 +68,6 @@ class _SearchBarState extends State<SearchBar> {
               cursorColor: Colors.black, //光标颜色
               cursorWidth: 2,
               cursorHeight: 20,
-
               inputFormatters: <TextInputFormatter>[
                 LengthLimitingTextInputFormatter(200)
               ],

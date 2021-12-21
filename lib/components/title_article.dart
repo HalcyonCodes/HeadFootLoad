@@ -18,13 +18,11 @@ class ArticleTitle extends StatelessWidget {
       this.searchString})
       : super(key: key);
 
-  //final List<GlobalKey> keys = [GlobalKey(),GlobalKey(),GlobalKey(),GlobalKey(),GlobalKey(),];
   @override
   Widget build(BuildContext context) {
     return Container(
-      //color: KColor.backGroundColor,
       width: width,
-      height: MediaQuery.of(context).size.height,
+      height: MediaQuery.of(context).size.height,//调整高度
       margin: const EdgeInsets.only(left: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

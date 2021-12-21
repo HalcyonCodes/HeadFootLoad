@@ -32,6 +32,7 @@ class HeadFootLoad extends StatefulWidget {
 
 class _HeadFootLoadState extends State<HeadFootLoad> {
   ScrollController? controller;
+  //------------注意！：这里的data需要替换为自己的item的数据viewModel
   List<ArticleTitleCardViewModel> data = [];
   double widgetHeight = 0;
   List<Widget> widgets = [];
@@ -56,15 +57,11 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
   @override
   void initState() {
     super.initState();
-    //data = widget.viewData;
-    //data.addAll(widget.viewModel.titleCards);
     widget.loadUtil.setRefrshHeadFootLoad(refreshHeadFootLoad);
-
     loadHeadEnable =
         widget.loadHeadEnable == null ? true : widget.loadHeadEnable!;
     loadFootEnable =
         widget.loadFootEnable == null ? true : widget.loadFootEnable!;
-
     data = widget.viewModel.titleCards;
 
     isListView = false;
@@ -126,6 +123,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
         pageOffsetIndex.add(index);
         currentPage = data[index].page;
       }
+      //-------------注意！：这里需要替换为自己的item元件---------------
       Widget card = SizedBox(
         child: ArticleTitleCard(
           key: dkey,
@@ -540,7 +538,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
     }
   }
 
-  //加载更多
+  //加载下一页的封装
   Future<void> loadMore(int articleId) async {
     try {
       await Future.delayed(const Duration(milliseconds: 350), () async {
@@ -554,7 +552,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
     }
   }
 
-  //加载上一页
+  //加载上一页的封装
   Future<void> loadLast(int articleId) async {
     try {
       await Future.delayed(const Duration(milliseconds: 350), () async {
