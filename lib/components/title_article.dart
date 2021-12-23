@@ -1,3 +1,5 @@
+import 'package:head_foot_load/config/index.dart';
+
 import '../viewModel/view_model.dart';
 import 'package:flutter/material.dart';
 import './countTitle/count_title_article.dart';
@@ -21,6 +23,7 @@ class ArticleTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: KColor.backGroundColor,
       width: width,
       height: MediaQuery.of(context).size.height,//调整高度
       margin: const EdgeInsets.only(left: 24),

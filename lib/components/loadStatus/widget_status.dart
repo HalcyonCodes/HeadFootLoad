@@ -57,7 +57,7 @@ class StatusWidget extends AnimatedWidget {
                     ),
 
                   //加载完成
-                  if (status == Status.statusIdel ||
+                  if (status == Status.statusHeadLoadCompleted||
                       status == Status.statusFootLoadCompleted)
                       //更改为加载成功图标
                     Container(

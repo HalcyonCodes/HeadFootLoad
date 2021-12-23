@@ -5,4 +5,5 @@ class KColor {
   static Color containColor = const Color.fromRGBO(255, 255, 255, 1.0);
   static Color greyTextColor = Colors.black.withOpacity(0.3);
   static Color hotMidleColor = primaryColor.withOpacity(0.5);
+  static  Color backGroundColor =  const Color.fromRGBO(255, 231, 208, 1.0);
 }
