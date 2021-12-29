@@ -22,7 +22,7 @@ class LoadUtil {
 
   Function()? _refreshHeadFootLoad;
   Function()? get refreshHeadFootLoad => _refreshHeadFootLoad;
-  void setRefrshHeadFootLoad(Function()? fun) {
+  void setRefreshHeadFootLoad(Function()? fun) {
     _refreshHeadFootLoad = fun;
   }
 

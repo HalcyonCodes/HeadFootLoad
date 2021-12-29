@@ -50,6 +50,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
   bool loadFootEnable = true;
   int loadHeadCount = 1;
   bool isInPageStack = false;
+
   void refreshHeadFootLoad() {
     setState(() {});
   }
@@ -57,7 +58,8 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
   @override
   void initState() {
     super.initState();
-    widget.loadUtil.setRefrshHeadFootLoad(refreshHeadFootLoad);
+    widget.loadUtil.setStatus(Status.statusMath);
+    widget.loadUtil.setRefreshHeadFootLoad(refreshHeadFootLoad);
     loadHeadEnable =
         widget.loadHeadEnable == null ? true : widget.loadHeadEnable!;
     loadFootEnable =
@@ -65,7 +67,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
     data = widget.viewModel.titleCards;
 
     isListView = false;
-    controller = ScrollController(initialScrollOffset: 2);
+    controller = ScrollController(initialScrollOffset: 4);
     widget.loadUtil.setScrollController(controller!);
     widget.loadUtil.setPhysics(0);
     currentPage = data[0].page;
@@ -76,6 +78,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
       scrollCtrlAddListener();
       widget.loadUtil.setStatus(Status.statusIdel);
       widget.loadUtil.refreshCount!();
+      //widget.loadUtil.setStatus(Status.statusIdel);
     });
   }
 
@@ -83,13 +86,13 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
     ScrollController sCtrl = widget.loadUtil.scrollController;
     sCtrl.addListener(() async {
       selectPage(sCtrl.position.pixels);
-      if (sCtrl.position.pixels == sCtrl.position.minScrollExtent &&
+      if ((sCtrl.position.maxScrollExtent != 0 && sCtrl.position.minScrollExtent != 0) && sCtrl.position.pixels == sCtrl.position.minScrollExtent &&
           loadHeadEnable == true) {
         ScrollController dCtrl = widget.loadUtil.scrollController;
         currentOffset = dCtrl.position.pixels;
         await loadPre(widget.viewModel.currentArticleId);
       }
-      if (sCtrl.position.pixels == sCtrl.position.maxScrollExtent &&
+      if ((sCtrl.position.maxScrollExtent != 0 && sCtrl.position.minScrollExtent != 0 )&& sCtrl.position.pixels == sCtrl.position.maxScrollExtent &&
           loadFootEnable == true) {
         ScrollController dCtrl = widget.loadUtil.scrollController;
         currentOffset = dCtrl.position.pixels;
@@ -250,7 +253,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
       widget.loadUtil.setStatus(Status.statusHeadLoading);
       widget.loadUtil.setStatuText();
       await Future.delayed(const Duration(seconds: 0), () {
-        controller = ScrollController(initialScrollOffset: 1);
+        controller = ScrollController(initialScrollOffset: 4);
         widget.loadUtil.setScrollController(controller!);
       });
       //刷出加载提示器

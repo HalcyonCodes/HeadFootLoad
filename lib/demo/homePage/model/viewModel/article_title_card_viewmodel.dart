@@ -84,7 +84,7 @@ class ArticleTitleViewModel extends HeadFootLoadViewModel{
 
   //加载更多
   @override
-  Future<int> loadMore(int articleId) async {
+  Future<int> loadMore(int? articleId) async {
     //int page = lastPage + 1; //用于请求
     //lastPage = page;
     response = null;
@@ -133,7 +133,7 @@ class ArticleTitleViewModel extends HeadFootLoadViewModel{
 
   //加载上一页
   @override
-   Future<int> loadLast(int articleId) async {
+   Future<int> loadLast(int? articleId) async {
      
      response = null;
     //1.根据Article发起dio请求, 根据headSkinCount省略条数
@@ -182,7 +182,7 @@ class ArticleTitleViewModel extends HeadFootLoadViewModel{
   }
 
   @override
-  search(String string) {
+  search(String? string) {
     //根据输入框发起http请求向数据库找数据
     
   }

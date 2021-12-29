@@ -1,3 +1,4 @@
+import 'package:flutter/rendering.dart';
 import 'package:head_foot_load/config/index.dart';
 
 import '../viewModel/view_model.dart';
@@ -18,7 +19,10 @@ class ArticleTitle extends StatelessWidget {
       required this.viewModel,
       required this.width,
       this.searchString})
-      : super(key: key);
+      : super(key: key){
+        //ScrollController controller = ScrollController();
+        //loadUtil.setScrollController(controller);
+      }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +55,7 @@ class ArticleTitle extends StatelessWidget {
             height: 12,
           ),
           Expanded(
-              child: HeadFootLoad(
+            child: HeadFootLoad(
             loadFootEnable: true,
             loadHeadEnable: true,
             width: width,

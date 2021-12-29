@@ -36,14 +36,14 @@ abstract class HeadFootLoadViewModel {
   Response? response;
 
   //刷新数据
-  refresh(int id);
+  refresh(int? id);
 
   //加载更多
-  loadMore(int id);
+  loadMore(int? id);
 
   //加载上一页
-  loadLast(int id);
+  loadLast(int? id);
 
   //搜索方法
-  search(String string);
+  search(String? string);
 }
