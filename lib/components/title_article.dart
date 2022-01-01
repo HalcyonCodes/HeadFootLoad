@@ -1,4 +1,4 @@
-import 'package:flutter/rendering.dart';
+//import '../utils/page_util.dart';
 import 'package:head_foot_load/config/index.dart';
 
 import '../viewModel/view_model.dart';
@@ -11,21 +11,27 @@ import '../utils/load_util.dart';
 class ArticleTitle extends StatelessWidget {
   final HeadFootLoadViewModel viewModel;
   final double width;
-  final LoadUtil loadUtil = LoadUtil();
+  final LoadUtil? loadUtil;
   final String? searchString;
+  late LoadUtil trueLoadUtil;
+
+  //final PageUtil? pageUtil;
 
   ArticleTitle(
       {Key? key,
       required this.viewModel,
       required this.width,
-      this.searchString})
+      this.searchString,
+      this.loadUtil,
+      //this.pageUtil
+      })
       : super(key: key){
-        //ScrollController controller = ScrollController();
-        //loadUtil.setScrollController(controller);
+        trueLoadUtil = loadUtil??LoadUtil();
       }
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       color: KColor.backGroundColor,
       width: width,
@@ -41,7 +47,7 @@ class ArticleTitle extends StatelessWidget {
             searchInitString: '请输入',
             searchString: searchString,
             viewModel: viewModel,
-            loadUtil: loadUtil,
+            loadUtil: trueLoadUtil,
           ),
           const SizedBox(
             height: 24,
@@ -49,18 +55,19 @@ class ArticleTitle extends StatelessWidget {
           ArticleTitleCount(
             page: viewModel.maxPage,
             count: viewModel.maxItem,
-            loadUtil: loadUtil,
+            loadUtil: trueLoadUtil,
           ),
           const SizedBox(
             height: 12,
           ),
           Expanded(
             child: HeadFootLoad(
+            //pageUtil: pageUtil,
             loadFootEnable: true,
             loadHeadEnable: true,
             width: width,
             viewModel: viewModel,
-            loadUtil: loadUtil,
+            loadUtil: trueLoadUtil,
           ))
         ],
       ),

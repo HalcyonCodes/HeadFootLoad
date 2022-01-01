@@ -1,6 +1,8 @@
+//import 'package:head_foot_load/utils/page_util.dart';
 import '../../config/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../viewModel/view_model.dart';
 
 class ArticleTitleCard extends StatelessWidget {
   final String category;
@@ -9,6 +11,9 @@ class ArticleTitleCard extends StatelessWidget {
   final String profiles;
   final List<String> tags;
   final String id;
+  //final PageUtil? pageUtil;
+  final HeadFootLoadViewModel viewModel;
+
   const ArticleTitleCard({
     Key? key,
     required this.category,
@@ -17,9 +22,15 @@ class ArticleTitleCard extends StatelessWidget {
     required this.profiles,
     required this.tags,
     required this.id,
+    required this.viewModel
+    //this.pageUtil
+
   }) : super(key: key);
+
+
   @override
   Widget build(BuildContext context) {
+
     List<Widget> tagTemps = List.generate(tags.length, (index) {
       return tag(tags[index]);
     });
@@ -31,7 +42,7 @@ class ArticleTitleCard extends StatelessWidget {
           boxShadow: [KShadow.shadow]),
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        onTap: () {},
+        onTap: onClick,
         child: Container(
           padding:
               const EdgeInsets.only(left: 24, right: 24, top: 12, bottom: 0),
@@ -123,4 +134,11 @@ class ArticleTitleCard extends StatelessWidget {
       ],
     );
   }
+  
+  void onClick(){
+    //pageUtil!.itemOnClick!(id);
+    //viewModel.currentArticleId = int.tryParse(id)!;
+    viewModel.itemClick(id);
+  }
+
 }

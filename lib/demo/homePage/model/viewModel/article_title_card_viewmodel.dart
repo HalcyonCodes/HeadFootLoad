@@ -28,7 +28,7 @@ class ArticleTitleViewModel extends HeadFootLoadViewModel{
 
   //刷新数据
   @override
-  Future<int>? refresh(int? articleId) async {
+  Future<int>? refresh(int? articleId,) async {
     
     titleCards = [];
     response = null;
@@ -185,6 +185,12 @@ class ArticleTitleViewModel extends HeadFootLoadViewModel{
   search(String? string) {
     //根据输入框发起http请求向数据库找数据
     
+  }
+
+  @override
+  itemClick(String id) {
+    // TODO: implement itemClick
+    throw UnimplementedError();
   }
 
 }

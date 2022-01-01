@@ -28,7 +28,7 @@ abstract class HeadFootLoadViewModel {
   /*late bool loadHeadEnable;
   late bool loadFootEnable;
   */
-  late int currentArticleId; //以某Id为准进行查询，根据skincount忽略skincount * 每页条数
+  int? currentArticleId; //以某Id为准进行查询，根据skincount忽略skincount * 每页条数
   late List<ArticleTitleCardViewModel> titleCards; //请求完数据后存放item 数据的列表，加载元件的时候就用它的数据加载;
   int lastSkinCount = 0; //这里指向后skin多少页
   int headSkinCount = 0; //这里指向前skin多少页
@@ -36,7 +36,7 @@ abstract class HeadFootLoadViewModel {
   Response? response;
 
   //刷新数据
-  refresh(int? id);
+  refresh(int? id,);
 
   //加载更多
   loadMore(int? id);
@@ -46,4 +46,6 @@ abstract class HeadFootLoadViewModel {
 
   //搜索方法
   search(String? string);
+
+  itemClick(String id);
 }

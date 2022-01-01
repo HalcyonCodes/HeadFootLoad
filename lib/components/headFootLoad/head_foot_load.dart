@@ -6,6 +6,7 @@ import '../../utils/enum_status.dart';
 import '../../utils/load_util.dart';
 import '../../viewModel/view_model.dart';
 import '../listItem/card_title_article.dart';
+//import '../../utils/page_util.dart';
 
 class HeadFootLoad extends StatefulWidget {
   //final List<Widget> widgets;
@@ -15,6 +16,7 @@ class HeadFootLoad extends StatefulWidget {
   final bool? loadHeadEnable;
   final bool? loadFootEnable;
   final double width;
+  //final PageUtil? pageUtil;
 
   const HeadFootLoad({
     Key? key,
@@ -24,6 +26,7 @@ class HeadFootLoad extends StatefulWidget {
     required this.viewModel,
     required this.loadUtil,
     required this.width,
+    //this.pageUtil
   }) : super(key: key);
 
   @override
@@ -86,17 +89,17 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
     ScrollController sCtrl = widget.loadUtil.scrollController;
     sCtrl.addListener(() async {
       selectPage(sCtrl.position.pixels);
-      if ((sCtrl.position.maxScrollExtent != 0 && sCtrl.position.minScrollExtent != 0) && sCtrl.position.pixels == sCtrl.position.minScrollExtent &&
+      if ((sCtrl.position.maxScrollExtent != 0 && sCtrl.position.minScrollExtent == 0) && sCtrl.position.pixels == sCtrl.position.minScrollExtent &&
           loadHeadEnable == true) {
         ScrollController dCtrl = widget.loadUtil.scrollController;
         currentOffset = dCtrl.position.pixels;
-        await loadPre(widget.viewModel.currentArticleId);
+        await loadPre(widget.viewModel.currentArticleId!);
       }
-      if ((sCtrl.position.maxScrollExtent != 0 && sCtrl.position.minScrollExtent != 0 )&& sCtrl.position.pixels == sCtrl.position.maxScrollExtent &&
+      if ((sCtrl.position.maxScrollExtent != 0 && sCtrl.position.minScrollExtent == 0 )&& sCtrl.position.pixels == sCtrl.position.maxScrollExtent &&
           loadFootEnable == true) {
         ScrollController dCtrl = widget.loadUtil.scrollController;
         currentOffset = dCtrl.position.pixels;
-        await loadNext(widget.viewModel.currentArticleId);
+        await loadNext(widget.viewModel.currentArticleId!);
       }
     });
   }
@@ -129,6 +132,8 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
       //-------------注意！：这里需要替换为自己的item元件---------------
       Widget card = SizedBox(
         child: ArticleTitleCard(
+          //pageUtil: widget.pageUtil,
+          viewModel: widget.viewModel,
           key: dkey,
           category: data[index].category,
           date: data[index].date,
