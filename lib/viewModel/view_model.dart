@@ -45,7 +45,7 @@ abstract class HeadFootLoadViewModel {
   loadLast(int? id);
 
   //搜索方法
-  search(String? string);
+  search(String? string, int? id);
 
   itemClick(String id);
 }

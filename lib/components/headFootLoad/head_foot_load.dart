@@ -57,12 +57,19 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
   void refreshHeadFootLoad() {
     setState(() {});
   }
+  
+  void refreshHeadFootLoadBySearch(){
+    data = widget.viewModel.titleCards;
+    setState(() {});
+  }
+  
 
   @override
   void initState() {
     super.initState();
     widget.loadUtil.setStatus(Status.statusMath);
     widget.loadUtil.setRefreshHeadFootLoad(refreshHeadFootLoad);
+    widget.loadUtil.setRefreshHeadFootLoadBySearch(refreshHeadFootLoadBySearch);
     loadHeadEnable =
         widget.loadHeadEnable == null ? true : widget.loadHeadEnable!;
     loadFootEnable =
@@ -73,7 +80,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
     controller = ScrollController(initialScrollOffset: 4);
     widget.loadUtil.setScrollController(controller!);
     widget.loadUtil.setPhysics(0);
-    currentPage = data[0].page;
+    currentPage = data.isEmpty?1:data[0].page;
     widget.loadUtil.setPage(currentPage);
     WidgetsBinding dinstance = WidgetsBinding.instance!;
     dinstance.addPostFrameCallback((timeStamp) async {
@@ -107,7 +114,7 @@ class _HeadFootLoadState extends State<HeadFootLoad> {
   @override
   Widget build(BuildContext context) {
     pageOffsetKeys = [];
-    int currentPage = data[0].page;
+    int currentPage = data.isEmpty?1:data[0].page;
     startPage = currentPage;
     widgets = [];
     List<Widget> widgetTemp = [];

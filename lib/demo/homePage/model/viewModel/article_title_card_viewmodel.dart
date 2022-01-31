@@ -182,7 +182,7 @@ class ArticleTitleViewModel extends HeadFootLoadViewModel{
   }
 
   @override
-  search(String? string) {
+  search(String? string, int? id) {
     //根据输入框发起http请求向数据库找数据
     
   }

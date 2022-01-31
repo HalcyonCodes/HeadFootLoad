@@ -26,6 +26,12 @@ class LoadUtil {
     _refreshHeadFootLoad = fun;
   }
 
+  Function()? _refreshHeadFootLoadBySearch;
+  Function()? get refreshHeadFootLoadBySearch => _refreshHeadFootLoadBySearch;
+  void setRefreshHeadFootLoadBySearch(Function()? fun) {
+    _refreshHeadFootLoadBySearch = fun;
+  }
+
   AnimationController? _controller;
   AnimationController get controller => _controller!;
   void setController(AnimationController? ctrl) {

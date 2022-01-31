@@ -31,6 +31,7 @@ class _SearchBarState extends State<SearchBar> {
   void initState() {
     super.initState();
     controller = TextEditingController(text: widget.searchString);
+    //controller = TextEditingController(text: 'hahahahah');
     searchInitString = widget.searchInitString;
   }
 
@@ -92,25 +93,28 @@ class _SearchBarState extends State<SearchBar> {
   void commit(String string) async {
     Response? response;
     try {
-      await Future.delayed(const Duration(milliseconds: 0), () async {
-        widget.viewModel.search(string);
+      //await Future.delayed(const Duration(milliseconds: 0), () async {
+        await widget.viewModel.search(string, null);
         //widget.loadUtil.refreshHeadFootLoad!();
         response = widget.viewModel.response;
-      });
+      //});
       if (response?.statusCode == HttpStatus.ok) {
-        widget.loadUtil.refreshHeadFootLoad!();
+        widget.loadUtil.refreshHeadFootLoadBySearch!();
+        //controller = TextEditingController();
+        //searchInitString = string;
+        //setState(() {});
       } else {
         controller = TextEditingController();
         searchInitString = '加载失败, 请重试';
         setState(() {});
       }
     } catch (e) {
-      await Future.delayed(const Duration(milliseconds: 350), () async {
+      //await Future.delayed(const Duration(milliseconds: 350), () async {
         //response = null;
         controller = TextEditingController();
         searchInitString = '加载失败, 请重试';
         setState(() {});
-      });
+      //});
     }
   }
 }
